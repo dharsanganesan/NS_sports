@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Sign-Up</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f5f5f5;
+      }
+      .container {
+        display: flex;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 700px;
+        transition: height 0.5s ease-in-out;
+      }
+      .image-section {
+        background-image: url('cricket.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 300px;
+        height: 100%;
+      }
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px;
+        width: 100%;
+      }
+      .form-section {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        transition: transform 0.5s ease-in-out;
+      }
+      .form-section.active {
+        display: flex;
+      }
+      .form-section h2 {
+        margin-bottom: 20px;
+      }
+      .form-section input {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+      }
+      .form-section button {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #800000;
+        color: white;
+        cursor: pointer;
+      }
+      .form-section button:hover {
+        background-color: #660000;
+      }
+      .form-section a {
+        color: #800000;
+        text-decoration: none;
+        margin-top: 10px;
+      }
+      .form-section a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <!-- Image Section -->
+      <div class="image-section"></div>
+
+      <!-- Form Container -->
+      <div class="form-container">
+        <!-- Login Form -->
+        <div class="form-section login active" id="login-form">
+          <h2>Login</h2>
+          <input type="text" placeholder="Email ID" />
+          <input type="password" placeholder="Password" />
+          <a href="#" onclick="showForgotPassword()">Forgot Password?</a>
+          <button>Log In</button>
+          <p>Don't have an account? <a href="#" onclick="showSignup()">Sign up</a></p>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="form-section signup" id="signup-form">
+          <h2>Sign Up</h2>
+          <input type="text" placeholder="Full Name" />
+          <input type="email" placeholder="Email ID" />
+          <input type="password" placeholder="Password" />
+          <input type="password" placeholder="Confirm Password" />
+          <button>Sign Up</button>
+          <p>Already have an account? <a href="#" onclick="showLogin()">Log in</a></p>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div class="form-section forgot-password" id="forgot-password-form">
+          <h2>Forgot Password</h2>
+          <input type="email" placeholder="Enter your Email ID" />
+          <button>Reset Password</button>
+          <p>Remembered your password? <a href="#" onclick="showLogin()">Log in</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const container = document.getElementById('container');
+      const loginForm = document.getElementById('login-form');
+      const signupForm = document.getElementById('signup-form');
+      const forgotPasswordForm = document.getElementById('forgot-password-form');
+
+      function showSignup() {
+        loginForm.classList.remove('active');
+        forgotPasswordForm.classList.remove('active');
+        signupForm.classList.add('active');
+        container.style.height = '650px';
+      }
+
+      function showLogin() {
+        signupForm.classList.remove('active');
+        forgotPasswordForm.classList.remove('active');
+        loginForm.classList.add('active');
+        container.style.height = '550px';
+      }
+
+      function showForgotPassword() {
+        loginForm.classList.remove('active');
+        signupForm.classList.remove('active');
+        forgotPasswordForm.classList.add('active');
+        container.style.height = '400px';
+      }
+    </script>
+  </body>
+</html>
